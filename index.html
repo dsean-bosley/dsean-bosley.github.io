@@ -318,6 +318,11 @@
     
       const form = document.getElementById('contact-form');
       const sendBtn = document.getElementById('send-button');
+
+      // Confirm we found them
+      console.log("Form:", form);
+      console.log("Send Button:", sendBtn);
+
       sendBtn.addEventListener('click', function() {
         emailjs.sendForm('service_icwt3xy', 'template_veytgco', this)
           .then(() => {
