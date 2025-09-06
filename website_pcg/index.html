@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Landing Page</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      padding-top: 80px;
+
+      /*Gradient background with animation*/
+      background: linear-gradient(-45deg, #decff8, #b7bef0, #b7e8ce, #f3c7d6);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.65);
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    section {
+      padding: 3em 2em;
+      text-align: center;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap; /*allows wrapping on small screens*/
+      justify-content: center;
+      align-items: center;
+      margin: 1em auto;
+      gap: 10px;
+      max-width: 1200px;
+    }
+    .image-container img {
+      flex: 1 1 calc(20% - 10px); /*5 images per row on large screens*/
+      max-width: calc(20% - 10px);
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1em;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    /*Contact Form Styling*/
+    .contact-form {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 2em;
+      text-align: left;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1em;
+      margin: 0.5em 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .contact-form button:hover {
+      background-color: #45a049;
+    }
+
+    /* Animations */
+    .slide-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    .slide-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-2 {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s ease-out;
+    }
+    .slide-in-2.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /*Responsive Breakpoints*/
+    @media (max-width: 1024px) {
+      .image-container img {
+        flex: 1 1 calc(33.33% - 10px); /*3 per row*/
+        max-width: calc(33.33% - 10px);
+      }
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+      .image-container img {
+        flex: 1 1 calc(50% - 10px); /*2 per row*/
+        max-width: calc(50% - 10px);
+      }
+    }
+    @media (max-width: 480px) {
+      section {
+        padding: 2em 1em;
+      }
+      .image-container img {
+        flex: 1 1 100%; /*1 per row*/
+        max-width: 100%;
+      }
+      footer {
+        font-size: 0.8rem;
+      }
+    }
+
+    /*Add this to your existing header styles*/
+    #main-header {
+    transition: all 0.3s ease;
+    padding: 1em 0;
+    }
+    #main-header.shrink {
+    padding: 0.5em 0;      /* Shrink vertical padding */
+    font-size: 0.9rem;     /* Shrink text slightly */
+    background-color: rgba(0, 0, 0, 0.9);
+    }
+    #main-header h1 {
+    margin: 0;
+    transition: font-size 0.3s ease;
+    }
+    #main-header.shrink h1 {
+    font-size: 1.1rem;     /* Adjusted for smaller header */
+    }
+  </style>
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>POSITIVE CHARACTER GIRLS BIKE-A-THON</h1>
+        <p>A day of fun to help our community grow</p>
+    </header>
+
+    <section>
+        <div class="content">
+            <h2 class="slide-in">About The Event</h2>
+            <p class="slide-in">
+                Our Third Annual Bike-A-Thon fundraiser has games, food, music, prizes, and more!
+                Watch our riders race around our track and help us cheer them on as they ride for a good cause!
+            </p>
+        </div>
+
+        <div class="image-container">
+            <img class="slide-in" src="images/a.jpg" alt="Picture A">
+            <img class="slide-in" src="images/b.jpg" alt="Picture B">
+            <img class="slide-in" src="images/c.jpg" alt="Picture C">
+        </div>
+
+
+        <!-- Image Container with Upside-Down Triangle Layout -->
+<!--         <div class="image-container">
+            <div class="image-row">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1607623618478-384d71c091d0?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+                    <p>Sample Image 1</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1637463681733-d41a22d933fe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2">
+                    <p>Sample Image 2</p>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1595182747080-3b43712dd27d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3">
+                <p>Sample Image 3</p>
+            </div>
+        </div> -->
+
+        <script>
+            // 🔎 Intersection Observer to trigger animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.2 });
+    
+            document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+        </script>
+
+        <script>
+            // Shrink header on scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shrink');
+            } else {
+                header.classList.remove('shrink');
+            }
+            });
+        </script>
+        
+    </section>
+
+    <!-- Contact Form Section -->
+    <section>
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form action="#" method="POST">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Positive Character Girls. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
