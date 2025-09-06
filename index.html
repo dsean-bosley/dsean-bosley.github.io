@@ -277,9 +277,8 @@
   emailjs.init("JUrARam3okHgGPgMF"); // Your EmailJS public key
 
   const form = document.getElementById('contact-form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default HTML form submission
-
+  const sendBtn = document.getElementById('send-button');
+  form.addEventListener('click', function() {
     emailjs.sendForm('service_icwt3xy', 'template_veytgco', this)
       .then(() => {
         alert("Message sent successfully!"); // Popup confirmation
@@ -331,7 +330,7 @@
                 <label for="email">Your Email</label>
                 <input type="email" id="email" name="message" placeholder="Enter your email" required>
 
-                <button type="submit">Send</button>
+                <button type="button" id="send-button">Send</button>
             </form>
           </div>
 
