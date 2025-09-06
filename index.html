@@ -6,7 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Landing Page</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function(){
+          emailjs.init({
+              publicKey: "JUrARam3okHgGPgMF",
+          });
+      })();
+  </script>
 
   <style>
     body {
@@ -285,7 +292,7 @@
         </div>
         <div class="contact-form">
             <h2>Contact Us</h2>
-            <form id="contact-form">
+<!--             <form id="contact-form">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
@@ -293,7 +300,17 @@
                 <input type="email" id="email" name="message" placeholder="Enter your email" required>
 
                 <button type="button" id="send-button">Send</button>
-            </form>
+            </form> -->
+
+            <form onsubmit="sendEmail(event)">
+              <label for="user_name">Name:</label>
+              <input type="text" id="user_name" name="name" required>
+      
+              <label for="user_email">Email:</label>
+              <input type="email" id="user_email" name="message" required>
+      
+              <input type="submit" value="Send Email">
+          </form>
           </div>
 
 
@@ -311,27 +328,56 @@
         <p>&copy; 2025 Positive Character Girls. All Rights Reserved.</p>
     </footer>
 
+    <script>function sendEmail(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      // Replace with your actual Service ID, Template ID, and Public Key
+      const serviceID = "service_icwt3xy";
+      const templateID = "template_veytgco";
+      const publicKey = "JUrARam3okHgGPgMF"; // This is also used in the init call
+
+      // Get form data (example for a simple form)
+      const form = event.target;
+      const templateParams = {
+          from_name: form.user_name.value, // Assuming an input with name="user_name"
+          from_email: form.user_email.value, // Assuming an input with name="user_email"
+          message: form.message.value, // Assuming a textarea with name="message"
+      };
+
+      emailjs.send(serviceID, templateID, templateParams, publicKey)
+          .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+              alert('Email sent successfully!');
+              form.reset(); // Clear the form
+          }, (error) => {
+              console.log('FAILED...', error);
+              alert('Failed to send email. Please try again.');
+          });
+    }</script>
+
+
+
+
     <script>
       // Wait for the DOM content to be fully loaded
       document.addEventListener("DOMContentLoaded", function() {
-        emailjs.init("JUrARam3okHgGPgMF"); // Your EmailJS public key
+/*         emailjs.init("JUrARam3okHgGPgMF")
     
       const form = document.getElementById('contact-form');
       const sendBtn = document.getElementById('send-button');
 
-      // Confirm we found them
       console.log("Form:", form);
       console.log("Send Button:", sendBtn);
 
       sendBtn.addEventListener('click', function() {
         emailjs.sendForm('service_icwt3xy', 'template_veytgco', this)
           .then(() => {
-            alert("Message sent successfully!"); // Popup confirmation
-            form.reset(); // Clear the form
+            alert("Message sent successfully!");
+            form.reset();
           }, (error) => {
             alert("Oops… something went wrong: " + JSON.stringify(error));
           });
-      });
+      }); */
     </script>
             
             
@@ -361,7 +407,6 @@
                 }
                 });
               });
-            </script>
             </script>
 
   </body>
