@@ -278,7 +278,7 @@
 
   const form = document.getElementById('contact-form');
   const sendBtn = document.getElementById('send-button');
-  form.addEventListener('click', function() {
+  sendBtn.addEventListener('click', function() {
     emailjs.sendForm('service_icwt3xy', 'template_veytgco', this)
       .then(() => {
         alert("Message sent successfully!"); // Popup confirmation
